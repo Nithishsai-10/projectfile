@@ -1,0 +1,118 @@
+def val():
+    global num
+    num = input("Enter First 3 Characters (between AAA to AAZ): ").upper()
+    
+    if len(num) == 0:
+        print("Null inputs are not accepted")
+        val()
+    elif len(num) != 3:
+        print("Input must be 3-digit alphabets")
+        val()
+    elif not (num[0] == 'A' and num[1] == 'A' and 'A' <= num[2] <= 'Z'):
+        print("First 3 characters must be between AAA to AAZ")
+        val()
+
+def pr():
+    print("The fourth character of PAN represents the status of the PAN holder.\n"
+          "1. 'P' stands for Individual\n"
+          "2. 'C' stands for Company\n"
+          "3. 'H' stands for Hindu Undivided Family (HUF)\n"
+          "4. 'A' stands for Association of Persons (AOP)\n"
+          "5. 'B' stands for Body of Individuals (BOI)\n"
+          "6. 'G' stands for Government Agency\n"
+          "7. 'J' stands for Artificial Juridical Person\n"
+          "8. 'L' stands for Local Authority\n"
+          "9. 'F' stands for Firm/ Limited Liability Partnership\n"
+          "10. 'T' stands for Trust")
+
+def choice():
+    global ch, n
+    ch = input("Enter the Type of User (Enter a Choice between 1 to 10): ")
+    
+    if len(ch) == 0:
+        print("Null inputs are not accepted")
+        choice()
+    elif not ch.isdigit():
+        print("Only numbers are accepted")
+        choice()
+    
+    n = int(ch)
+    
+    if n < 1 or n > 10:
+        print("Input must be between 1 to 10")
+        choice()
+
+def name():
+    global nm
+    nm = input("Enter your Name (Example: Nithish sai D): ")
+    
+    if len(nm) == 0:
+        print("Null inputs are not accepted")
+        name()
+    elif not all(c.isalpha() or c == ' ' for c in nm):
+        print("Only alphabets are accepted")
+        name()
+
+def val2():
+    global num2
+    num2 = input("Enter your PAN Card number (any 4 digit number between 0001 to 9999): ")
+    
+    if len(num2) == 0:
+        print("Null inputs are not accepted")
+        val2()
+    elif len(num2) != 4 or not num2.isdigit():
+        print("Input must be a 4-digit number")
+        val2()
+    
+    v = int(num2)
+    if v < 1 or v > 9999:
+        print("Input must be in range between 0001 and 9999")
+        val2()
+
+def alp():
+    global a
+    a = input("Enter Last Character of your PAN Card (any 1 Character between A to Z): ").upper()
+    
+    if len(a) == 0:
+        print("Null inputs are not accepted")
+        alp()
+    elif len(a) != 1 or not a.isalpha():
+        print("input must be a single alphabetic character")
+        alp()
+
+def re():
+    global r
+    r = num.upper() + str(n) + nm[0].upper() + num2 + a.upper()
+    print("Entered PAN Card Number " + r + " is Valid !!!")
+
+def run():
+    global r
+    r = input("Do you want to RUN Again (Yes / No): ").upper()
+    
+    if len(r) == 0:
+        print("Null inputs are not accepted")
+        run()
+    elif r not in ['Y', 'N']:
+        print("Input must be Y / N")
+        run()
+    
+    if r == 'Y':
+        val()
+        pr()
+        choice()
+        name()
+        val2()
+        alp()
+        re()
+        run()
+    else:
+        print("Thank you...")
+
+val()
+pr()
+choice()
+name()
+val2()
+alp()
+re()
+run()
